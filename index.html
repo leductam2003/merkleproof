@@ -53,15 +53,9 @@
       <details open="">
         <summary>Input ▾</summary>
         <form id="form" class="box">
-          <div>
+          <div class="control">
             <label>Leaves <small>(input json array or newline separated)</small></label>
-            <textarea class="textarea" id="input" rows="10">  [
-    "0xca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
-    "0x3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
-    "0x2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6"
-  ]
-          </textarea>
-          </div>
+            <textarea class="textarea" placeholder="input json array or newline separated..." id="input" rows="10"></textarea>
           <div>
             <label>Hash function</label>
             <div>
@@ -107,22 +101,25 @@
       <details open="">
         <summary>Proof ▾</summary>
         <form id="proofForm" class="box">
+          <div class="box" id="root">...</div>
           <div>
-            <label>Leaf</label>
-            <div>
-              <select id="leaveSelect" class="select2">
+            <label>Address</label>
+            <div >
+              <select id="leaveSelect" class="select2" style="width: 25%">
               </select>
             </div>
           </div>
           <div>
-            <label>Proof (Byte32[]): </label><br />
+            <br><label>Proof (Byte32[]): </label><br />
             <div class="columns">
               <div class="column">
                 <pre id="proof"></pre>
               </div>
               <div class="column">
                 <label>String: </label>
-                <textarea class="textarea" id="proofString"></textarea>
+                <div class="control">
+                  <textarea class="textarea is-primary" placeholder="Proof in string..." id="proofString"></textarea>
+                </div>
                 <br/>
                 <button class="button" id="copyProofButton" type="button">Copy</button>
                 <br/><label id="statusCopy">...</label>
@@ -137,8 +134,8 @@
         <summary>Verify ▾</summary>
         <form id="verifyForm" class="box">
           <label>Proof</label>
-          <div>
-            <textarea class="textarea" id="verifyProof" rows="3"></textarea>
+          <div class="control">
+            <textarea class="textarea" placeholder="Verify proof..." id="verifyProof" rows="3"></textarea>
           </div>
           <label>Leaf</label>
           <div>
@@ -159,13 +156,10 @@
       </details>
     </div>
     <div>
-      <details open="">
+      <details>
         <summary>Output ▾</summary>
         <div id="output">
           <div>
-            <label>Root</label>
-            <pre id="root"></pre>
-          </div>
           <div>
             <label>Leaves</label>
             <pre id="leaves"></pre>
@@ -190,15 +184,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-  <script src="./MerkleTree.js example_files/keccak256.js"></script>
-  <script src="./MerkleTree.js example_files/sha256.min.js"></script>
-  <script src="./MerkleTree.js example_files/merkletree.js"></script>
-  <script src="./MerkleTree.js example_files/main.js"></script>
+  <script src="./js/keccak256.js"></script>
+  <script src="./js/sha256.min.js"></script>
+  <script src="./js/merkletree.js"></script>
+  <script src="./js/main.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <script type="text/javascript">
     $(document).ready(function () {
       $('#leaveSelect').select2({
-        width: 'auto' // need to override the changed default
+        width: 'style' // need to override the changed default
       });
       $("#copyProofButton").click(function () {
         $("#proofString").select();
@@ -211,7 +205,7 @@
   </script>
   <a href="https://github.com/miguelmota/merkletreejs" target="_blank"><img
       style="position: absolute; top: 0; right: 0; border: 0;"
-      src="./MerkleTree.js example_files/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
+      src="./js/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
       alt="Fork me on GitHub"
       data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 

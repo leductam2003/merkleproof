@@ -63,7 +63,7 @@ function compute () {
   setLayersValue(JSON.stringify(hexLayers, null, 2))
   setFlatLayersValue(JSON.stringify(hexFlatLayers, null, 2))
   setTreeValue(tree.toString())
-  updateLeaveOptions(hexLeaves)
+  updateLeaveOptions(leaves)
   updateProof(0)
   setVerified('-')
 }
@@ -87,7 +87,7 @@ function parseInput (value) {
 }
 
 function updateLeaveOptions (leaves) {
-  $leaveSelect.html = ''
+  $leaveSelect.empty();
   leaves.forEach(function (leaf, i) {
     const el = document.createElement('option')
     el.value = `${i}`
@@ -186,7 +186,7 @@ function setInputValue (value, onlySave) {
 }
 
 function setRootValue (value) {
-  $root.textContent = value
+  $root.textContent = 'Merkle Root Hash: ' + value
 }
 
 function setLeavesValue (value) {
